@@ -1,78 +1,132 @@
-
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Czech ATM s.r.o.</title>
   <style>
     body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
-    header, footer { background-color: #002b50; color: white; padding: 1rem; }
-    nav a { color: white; margin: 0 1rem; text-decoration: none; }
-    .container { padding: 2rem; }
-    .gallery img { width: 300px; margin: 1rem; border-radius: 8px; }
+    header, footer { background-color: #003366; color: white; padding: 1em; text-align: center; position: relative; }
+    nav { background: #f2f2f2; padding: 1em; text-align: center; }
+    nav a { margin: 0 15px; text-decoration: none; color: #003366; font-weight: bold; }
+    section { padding: 2em; }
+    h2 { color: #003366; }
+    .gallery img { width: 300px; margin: 10px; border: 1px solid #ccc; }
     .gallery { display: flex; flex-wrap: wrap; justify-content: center; }
-    #map { width: 100%; height: 400px; margin-top: 2rem; }
-    img.logo { height: 50px; float: right; }
+    .logo { position: absolute; top: 10px; right: 10px; width: 100px; }
+    .container { max-width: 960px; margin: 0 auto; padding: 1em; }
+    iframe { width: 100%; height: 300px; border: none; margin-top: 20px; }
+    .lang-switch { position: absolute; top: 10px; left: 10px; }
+    .lang-switch span { color: white; font-weight: bold; margin: 0 5px; text-decoration: underline; cursor: pointer; }
+    .hidden { display: none; }
   </style>
 </head>
 <body>
   <header>
+    <div class="lang-switch">
+      <span onclick="setLang('cs')">CZ</span> | <span onclick="setLang('en')">EN</span>
+    </div>
     <h1>Czech ATM s.r.o.</h1>
-    <img src="logo.png" alt="Logo" class="logo" />
-    <nav>
-      <a href="#home">Domů</a>
-      <a href="#about">O nás</a>
-      <a href="#services">Služby</a>
-      <a href="#gallery">Fotogalerie</a>
-      <a href="#contact">Kontakt</a>
-    </nav>
+    <img src="logo.png" alt="Logo Czech ATM" class="logo">
   </header>
-  <section id="home" class="container">
-    <h2>Vítejte</h2>
-    <p>Jsme firma poskytující servisní a instalační práce v oblasti pokladních systémů a bankomatů, zejména zařízení NCR.</p>
-  </section>
-  <section id="about" class="container">
-    <h2>O nás</h2>
-    <ul>
-      <li>Působíme na trhu více než 20 let</li>
-      <li>Spolupracujeme s významnými retailovými řetězci jako je firma NCR</li>
-      <li>Naším cílem je spolehlivost, preciznost a bezpečnost</li>
-      <li>Specializujeme se na technickou podporu a profylaxi zařízení NCR a bankomatů ATM</li>
-      <li>Působíme po celé České republice</li>
-    </ul>
-  </section>
-  <section id="services" class="container">
-    <h2>Naše služby</h2>
-    <ul>
-      <li>Profylaxe bankomatů</li>
-      <li>Profylaxe samoobslužných pokladen Tesco</li>
-      <li>Instalace hardwaru – refity, zapojení kabelů, osvětlení atp.</li>
-      <li>Kompletace pokladen ve skladu – příprava před distribucí</li>
-    </ul>
-  </section>
-  <section id="gallery" class="container">
-    <h2>Fotogalerie</h2>
-    <div class="gallery">
-      <img src="A01DAE4E-CDC2-409F-8C55-3BF21BD13390.jpeg" alt="Pokladní systém" />
-      <img src="819FDA5E-F2D1-410F-B4CC-8B21535120AD.jpeg" alt="Detail terminálu" />
-      <img src="467863ea-bdf8-44db-af01-11277321cce0.png" alt="ATM zařízení Euronet" />
-    </div>
-  </section>
-  <section id="contact" class="container">
-    <h2>Kontakt</h2>
-    <p>Jednatel firmy: Pavel Pašek</p>
-    <p>E-mail: czechatm@seznam.cz</p>
-    <p>Telefon: +420 724 270 953</p>
-    <p>Sídlo: Za Mototechnou 1619, Stodůlky (Praha 13), 155 00 Praha</p>
-    <p>IČO / DIČ: 49359436 / CZ49359436</p>
-    <div id="map">
-      <iframe src="https://maps.google.com/maps?q=Za%20Mototechnou%201619%2C%20Praha&t=&z=15&ie=UTF8&iwloc=&output=embed"
-              width="100%" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
-    </div>
-  </section>
+
+  <nav>
+    <a href="#home" lang="cs">Domů</a>
+    <a href="#home" lang="en" class="hidden">Home</a>
+    <a href="#about" lang="cs">O nás</a>
+    <a href="#about" lang="en" class="hidden">About</a>
+    <a href="#services" lang="cs">Služby</a>
+    <a href="#services" lang="en" class="hidden">Services</a>
+    <a href="#gallery" lang="cs">Fotogalerie</a>
+    <a href="#gallery" lang="en" class="hidden">Gallery</a>
+    <a href="#contact" lang="cs">Kontakt</a>
+    <a href="#contact" lang="en" class="hidden">Contact</a>
+  </nav>
+
+  <div class="container">
+    <section id="home">
+      <h2 lang="cs">Vítejte</h2>
+      <h2 lang="en" class="hidden">Welcome</h2>
+      <p lang="cs">Vítejte na stránkách společnosti Czech ATM s.r.o. Jsme firma poskytující servisní a instalační práce v oblasti pokladních systémů a bankomatů. Nejčastěji se jedná hlavně o bankomaty ATM a pokladní systémy firmy NCR.</p>
+      <p lang="en" class="hidden">Welcome to Czech ATM s.r.o. We provide service and installation work in the area of POS systems and ATMs, especially NCR equipment.</p>
+    </section>
+
+    <section id="about">
+      <h2 lang="cs">O nás</h2>
+      <h2 lang="en" class="hidden">About Us</h2>
+      <ul lang="cs">
+        <li>Působíme na trhu více než 20 let</li>
+        <li>Spolupracujeme s významnými retailovými řetězci jako je firma NCR</li>
+        <li>Naším cílem je spolehlivost, preciznost a bezpečnost</li>
+        <li>Specializujeme se na technickou podporu a profylaxi zařízení firmy NCR nebo ATM bankomatů</li>
+        <li>Působíme po celé České republice</li>
+      </ul>
+      <ul lang="en" class="hidden">
+        <li>We have been operating for over 20 years</li>
+        <li>We work with major retail chains including NCR</li>
+        <li>Our goal is reliability, precision, and security</li>
+        <li>We specialize in technical support and preventive maintenance of NCR and ATM equipment</li>
+        <li>We operate throughout the Czech Republic</li>
+      </ul>
+    </section>
+
+    <section id="services">
+      <h2 lang="cs">Naše služby</h2>
+      <h2 lang="en" class="hidden">Our Services</h2>
+      <ul lang="cs">
+        <li>Profylaxe bankomatů</li>
+        <li>Profylaxe samoobslužných pokladen Tesco</li>
+        <li>Instalace hardwaru na prodejnách – refity, umístění pokladen na místo, zapojení příslušných kabelů, osvětlení atp.</li>
+        <li>Kompletace pokladen ve skladu – příprava jednotek před distribucí</li>
+      </ul>
+      <ul lang="en" class="hidden">
+        <li>ATM maintenance</li>
+        <li>Maintenance of Tesco self-checkouts</li>
+        <li>POS hardware installation – including refits, setup, cabling, lighting, etc.</li>
+        <li>POS unit preparation in warehouse before deployment</li>
+      </ul>
+    </section>
+
+    <section id="gallery">
+      <h2 lang="cs">Fotogalerie</h2>
+      <h2 lang="en" class="hidden">Gallery</h2>
+      <div class="gallery">
+        <img src="A01DAE4E-CDC2-409F-8C55-3BF21BD13390.jpeg" alt="Pokladní systém">
+        <img src="819FDA5E-F2D1-410F-B4CC-8B21535120AD.jpeg" alt="Detail terminálu">
+        <img src="467863ea-bdf8-44db-af01-11277321cce0.png" alt="ATM zařízení Euronet">
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2 lang="cs">Kontakt</h2>
+      <h2 lang="en" class="hidden">Contact</h2>
+      <p lang="cs"><strong>Jednatel firmy:</strong> Pavel Pašek</p>
+      <p lang="en" class="hidden"><strong>Managing Director:</strong> Pavel Pašek</p>
+      <p><strong>E-mail:</strong> <a href="mailto:czechatm@seznam.cz">czechatm@seznam.cz</a></p>
+      <p><strong>Telefon / Phone:</strong> <a href="tel:+420724270953">+420 724 270 953</a></p>
+      <p lang="cs"><strong>Sídlo firmy:</strong> Za Mototechnou 1619, Stodůlky (Praha 13), 155 00 Praha</p>
+      <p lang="en" class="hidden"><strong>Headquarters:</strong> Za Mototechnou 1619, Stodůlky (Prague 13), 155 00 Prague</p>
+      <p><strong>IČO / DIČ:</strong> 49359436 / CZ49359436</p>
+      <iframe src="https://www.google.com/maps?q=Za+Mototechnou+1619,+Praha&output=embed"></iframe>
+    </section>
+  </div>
+
   <footer>
-    <p>&copy; 2025 Czech ATM s.r.o.</p>
+    &copy; 2025 Czech ATM s.r.o.
   </footer>
+    <script>
+  function setLang(lang) {
+    localStorage.setItem('lang', lang);
+    document.querySelectorAll('[lang]').forEach(el => {
+      if (el.tagName !== 'HTML' && el.tagName !== 'HEAD') {
+        el.classList.toggle('hidden', el.getAttribute('lang') !== lang);
+      }
+    });
+  }
+  window.addEventListener('DOMContentLoaded', () => {
+    const storedLang = localStorage.getItem('lang') || 'cs';
+    setLang(cs);
+  });
+</script>
 </body>
 </html>
